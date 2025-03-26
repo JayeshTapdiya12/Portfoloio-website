@@ -699,32 +699,46 @@
           </div>
         </div>
 
-        <form action="" class="contact__form grid">
+        <form action="" class="contact__form grid" id="contactForm">
           <div class="contact__inputs grid">
             <div class="contact__content">
-              <label for="" class="content__label">Name</label>
-              <input type="text" class="contact__input" />
+              <label for="name" class="content__label">Name</label>
+              <input type="text" id="name" class="contact__input" required />
             </div>
 
             <div class="contact__content">
-              <label for="" class="content__label">Email</label>
-              <input type="Email" class="contact__input" />
+              <label for="email" class="content__label">Email</label>
+              <input type="email" id="email" class="contact__input" required />
             </div>
           </div>
 
           <div class="contact__content">
-            <label for="" class="content__label">Message</label>
-            <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
+            <label for="message" class="content__label">Message</label>
+            <textarea id="message" cols="0" rows="7" class="contact__input" required></textarea>
           </div>
 
           <div>
-            <a href=" mailto:jayesh121220@gmail.com?subject=regarding development! &body=Hello Jayesh !!"
-              class="button button--flex">
+            <button type="submit" class="button button--flex">
               Send Message
               <i class="uil uil-message button__icon"></i>
-            </a>
+            </button>
           </div>
         </form>
+
+        <script>
+          document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            const mailtoLink = `mailto:jayesh121220@gmail.com?subject=Regarding Development!&body=Hello Jayesh,%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0A%0A${encodeURIComponent(message)}`;
+
+            window.location.href = mailtoLink;
+          });
+        </script>
+
       </div>
     </section>
   </main>
